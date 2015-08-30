@@ -9,22 +9,13 @@
     </div>
 
     <div class="row">
-        <!--div class="col-md-4">
+        <div class="col-md-4">
             <h2>Lisensoversikt</h2>
             <p>
                 De fleste bedrifter trenger oversikt over lisensene i bruk, hvem som bruker de og hvor lenge de er gyldige. CentPro Lisensweb er dette verktøyet.
             </p>
             <p>
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Les mer &raquo;</a>
-            </p>
-        </!--div-->
-        <div class="col-md-4">
-            <h2>SQL tilkoblingstest</h2>
-            <p>
-                Trykk her for å teste SQL connectionstring fra Web.config
-            </p>
-            <p>
-                <asp:Button ID="sqltestbtn" runat="server" Text="Test" OnClick="sqltestbtn_Click" />
             </p>
         </div>
         <div class="col-md-4">

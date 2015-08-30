@@ -34,7 +34,7 @@ namespace CentPro_Licence_Web
             }
             catch
             {
-                Response.Write("Catched a try: No connection. Timed out without response...");
+                Response.Write("Connection string: " + ConfigurationManager.ConnectionStrings["CentProSQL"].ToString() + "\r\nCatched a try: No connection. Timed out without response...");
             }
         }
     }
