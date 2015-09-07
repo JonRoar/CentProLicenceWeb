@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace CentPro_Licence_Web
 {
-    public partial class Licences : Page
+    public partial class Agreements : Page
     {
         SqlDataAdapter da;
         DataSet ds = new DataSet();
@@ -33,17 +33,10 @@ namespace CentPro_Licence_Web
             try
             {
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CentProSQL"].ConnectionString);
-                //cmd.CommandText = "Select * from Licences";
-                cmd.CommandText = "SELECT l.lID AS 'lID', u.uName AS 'Eier', a.aAgreementName AS 'Avtale', l.lDateFrom AS 'Gyldig fra', " +
-                                    "l.lDateTo AS 'Gyldig til', l.lCount AS 'Antall lisenser', n.nDescription AS 'Varsel', p.pName as 'Produsent', " +
-                                    "c.cName AS 'Kontaktperson' " +
-
-                                    "FROM Licences l, Users u, Agreements a " +
-
-                                    "LEFT JOIN Licences lic ON lic.aID = a.aID " +
-                                    "LEFT JOIN Notifications n ON lic.nID = n.nID " +
-                                    "LEFT JOIN Producer p ON lic.pID = p.pID " +
-                                    "LEFT JOIN Contacts c ON lic.cID = c.cID";
+                //cmd.CommandText = "Select * from Agreements";
+                cmd.CommandText = "SELECT a.aID AS 'aID', a.aAgreementName AS 'Avtale', u.uName AS 'Avtaleeier'" +
+                                    "FROM Users u, Agreements a " +
+                                    "JOIN Users us ON a.uID_AgreementOwner = us.uID";
                 cmd.Connection = con;
 
                 da = new SqlDataAdapter(cmd);
@@ -51,14 +44,14 @@ namespace CentPro_Licence_Web
                 con.Open();
                 cmd.ExecuteNonQuery();
 
-                licenceGridView.DataSource = ds;
-                licenceGridView.DataBind();
+                agreementsGridView.DataSource = ds;
+                agreementsGridView.DataBind();
 
                 con.Close();
             }
             catch (SqlException)
             {
-                
+                //TODO: show errors to user on page. -jr
             }
             finally
             {
@@ -95,27 +88,27 @@ namespace CentPro_Licence_Web
 
         protected void licenceGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            licenceGridView.EditIndex = e.NewEditIndex;
+            agreementsGridView.EditIndex = e.NewEditIndex;
             BindData();
         }
 
         protected void licenceGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            licenceGridView.PageIndex = e.NewPageIndex;
+            agreementsGridView.PageIndex = e.NewPageIndex;
             BindData();
         }
 
         protected void licenceGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            licenceGridView.EditIndex = -1;
+            agreementsGridView.EditIndex = -1;
             BindData();
         }
 
 
         protected void licenceGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int licenceID = Convert.ToInt32(licenceGridView.DataKeys[e.RowIndex].Value.ToString());
-            GridViewRow row = (GridViewRow)licenceGridView.Rows[e.RowIndex];
+            int licenceID = Convert.ToInt32(agreementsGridView.DataKeys[e.RowIndex].Value.ToString());
+            GridViewRow row = (GridViewRow)agreementsGridView.Rows[e.RowIndex];
 
             Label lbllID = (Label)row.FindControl("lbllID");
             //TextBox txtname=(TextBox)gr.cell[].control[];
@@ -124,11 +117,11 @@ namespace CentPro_Licence_Web
             //TextBox textc = (TextBox)row.Cells[2].Controls[0]; //JRO removed
             //TextBox textadd = (TextBox)row.FindControl("txtadd");
             //TextBox textc = (TextBox)row.FindControl("txtc");
-            licenceGridView.EditIndex = -1;
+            agreementsGridView.EditIndex = -1;
 
             con.Open();
             //SqlCommand cmd = new SqlCommand("SELECT * FROM detail", con);
-            SqlCommand cmd = new SqlCommand("UPDATE Licences SET owner_uID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID, con);
+            SqlCommand cmd = new SqlCommand("UPDATE Agreements SET aID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID, con);
             cmd.ExecuteNonQuery();
 
             con.Close();

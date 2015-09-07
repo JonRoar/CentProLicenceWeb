@@ -784,8 +784,8 @@ pre code {
 }
 
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .row:before,
@@ -1407,6 +1407,7 @@ pre code {
 table {
   max-width: 100%;
   background-color: transparent;
+    margin-right: 15px;
 }
 
 th {
@@ -4027,7 +4028,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
+  border: 1px solid transparent;  
+;
+g-bottom: 15px;
+  }
+}
+}
 }
 
 .navbar:before,
@@ -4121,6 +4127,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     width: auto;
     border-top: 0;
     box-shadow: none;
+     margin-top: 75px;
   }
   .navbar-collapse.collapse {
     display: block !important;
@@ -4246,6 +4253,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+}
+
+.navbar-nav > li > a:hover{
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {

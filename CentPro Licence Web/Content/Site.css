@@ -1,6 +1,6 @@
 ﻿/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 50px;
+    padding-top: 110px;
     padding-bottom: 20px;
 }
 
@@ -9,6 +9,54 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+/* Style data ASP.NET DataGrid */
+.Grid {
+    border: solid 1px Tan;
+}
+
+.Grid td
+{
+    border: solid 3px #FFFFFF;
+    margin: 3px 3px 3px 3px;
+    font-family: Arial;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+}
+
+.GridHeader
+{
+    font-weight: bold;
+    background-color: Tan;
+}
+
+.GridHeader a
+{
+    text-decoration: none;
+    color: LightGoldenrodYellow;
+    padding: 0px 15px 0px 15px;
+}
+
+.GridHeader a:hover
+{
+    text-decoration: underline;
+    background: Tan url(images/spin.gif) no-repeat 0 100%;
+}
+
+.GridItem, .GridAltItem
+{
+    font-size: smaller;
+}
+
+.GridItem
+{
+    background-color: LightGoldenrodYellow;
+}
+
+.GridAltItem
+{
+    background-color: PaleGoldenrod;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -30,7 +78,7 @@ input[type="select"] {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
-        margin-top: 20px;
+        margin-top: 75px;
     }
     .body-content {
         padding: 0;

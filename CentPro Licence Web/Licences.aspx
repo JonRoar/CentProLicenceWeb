@@ -9,31 +9,29 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <h2></h2>
-            <p>
-                <asp:GridView ID="licenceGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None"
-                    Caption="Mine lisenser" CaptionAlign="Left" 
-                    OnPageIndexChanging="licenceGridView_PageIndexChanging" 
-                    OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
-                    OnRowDeleting="licenceGridView_RowDeleting" 
-                    OnRowEditing="licenceGridView_RowEditing" 
-                    OnRowUpdating="licenceGridView_RowUpdating">
-                    <Columns>
-                    <asp:BoundField DataField="lID" HeaderText="lID" />
-                    <asp:BoundField DataField="Eier" HeaderText="Eier" />
-                    <asp:BoundField DataField="Avtale" HeaderText="Avtale" />
-                    <asp:BoundField DataField="Gyldig fra" HeaderText="Gyldig fra" />
-                    <asp:BoundField DataField="Gyldig til" HeaderText="Gyldig til" />
-                    <asp:BoundField DataField="Antall lisenser" HeaderText="Antall" />
-                    <asp:BoundField DataField="Varsel" HeaderText="Varsel" />
-                    <asp:BoundField DataField="Produsent" HeaderText="Produsent" />
-                    <asp:BoundField DataField="Kontaktperson" HeaderText="Kontaktperson" />
-                    <asp:CommandField ShowEditButton="true" />
-                    </Columns>
-                </asp:GridView>
-            </p>
-        </div>
+        <h2></h2>
+        <p>
+            <asp:GridView ID="licenceGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None"
+                Caption="Mine lisenser" CaptionAlign="Left" 
+                OnPageIndexChanging="licenceGridView_PageIndexChanging" 
+                OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
+                OnRowDeleting="licenceGridView_RowDeleting" 
+                OnRowEditing="licenceGridView_RowEditing" 
+                OnRowUpdating="licenceGridView_RowUpdating" Width="1200px">
+                <Columns>
+                <asp:BoundField DataField="lID" HeaderText="lID" />
+                <asp:BoundField DataField="Eier" HeaderText="Eier" />
+                <asp:BoundField DataField="Avtale" HeaderText="Avtale" />
+                <asp:BoundField DataField="Gyldig fra" HeaderText="Gyldig fra" />
+                <asp:BoundField DataField="Gyldig til" HeaderText="Gyldig til" />
+                <asp:BoundField DataField="Antall lisenser" HeaderText="Antall" />
+                <asp:BoundField DataField="Varsel" HeaderText="Varsel" />
+                <asp:BoundField DataField="Produsent" HeaderText="Produsent" />
+                <asp:BoundField DataField="Kontaktperson" HeaderText="Kontaktperson" />
+                <asp:CommandField ShowEditButton="true" />
+                </Columns>
+            </asp:GridView>
+        </p>
 
         <!--div class="col-md-4">
             <h2>SQL tilkoblingstest</h2>

@@ -46,13 +46,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">CentPro Lisensweb</a>
+                    <a class="navbar-brand" runat="server" href="~/"><img src="Content/images/logo.png"/></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Licences">Lisensweb</a></li>
-                        <li><a runat="server" href="~/About">Om CentPro</a></li>
-                        <li><a runat="server" href="~/Contact">Kontakt</a></li>
+                        <li><a runat="server" href="~/Licences">Lisenser</a></li>
+                        <li><a runat="server" href="~/Agreements">Avtaler</a></li>
+                        <li><a runat="server" href="~/Settings">Innstillinger</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
