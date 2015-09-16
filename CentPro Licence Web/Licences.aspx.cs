@@ -30,29 +30,40 @@ namespace CentPro_Licence_Web
 
         public void BindData()
         {
-            con = new SqlConnection(ConfigurationManager.ConnectionStrings["CentProSQL"].ConnectionString);
-            //cmd.CommandText = "Select * from Licences";
-            cmd.CommandText = "SELECT l.lID AS 'lID', u.uName AS 'Eier', a.aAgreementName AS 'Avtale', l.lDateFrom AS 'Gyldig fra', " +
-                                "l.lDateTo AS 'Gyldig til', l.lCount AS 'Antall lisenser', n.nDescription AS 'Varsel', p.pName as 'Produsent', " +
-                                "c.cName AS 'Kontaktperson' " +
+            try
+            {
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["CentProSQL"].ConnectionString);
+                //cmd.CommandText = "Select * from Licences";
+                cmd.CommandText = "SELECT l.lID AS 'lID', u.uName AS 'Eier', a.aAgreementName AS 'Avtale', l.lDateFrom AS 'Gyldig fra', " +
+                                    "l.lDateTo AS 'Gyldig til', l.lCount AS 'Antall lisenser', n.nDescription AS 'Varsel', p.pName as 'Produsent', " +
+                                    "c.cName AS 'Kontaktperson' " +
 
-                                "FROM Licences l, Users u, Agreements a " +
+                                    "FROM Licences l, Users u, Agreements a " +
 
-                                "LEFT JOIN Licences lic ON lic.aID = a.aID " +
-                                "LEFT JOIN Notifications n ON lic.nID = n.nID " +
-                                "LEFT JOIN Producer p ON lic.pID = p.pID " +
-                                "LEFT JOIN Contacts c ON lic.cID = c.cID";
-            cmd.Connection = con;
+                                    "LEFT JOIN Licences lic ON lic.aID = a.aID " +
+                                    "LEFT JOIN Notifications n ON lic.nID = n.nID " +
+                                    "LEFT JOIN Producer p ON lic.pID = p.pID " +
+                                    "LEFT JOIN Contacts c ON lic.cID = c.cID";
+                cmd.Connection = con;
 
-            da = new SqlDataAdapter(cmd);
-            da.Fill(ds);
-            con.Open();
-            cmd.ExecuteNonQuery();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                con.Open();
+                cmd.ExecuteNonQuery();
 
-            licenceGridView.DataSource = ds;
-            licenceGridView.DataBind();
+                licenceGridView.DataSource = ds;
+                licenceGridView.DataBind();
 
-            con.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         protected void licenceGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -102,7 +113,6 @@ namespace CentPro_Licence_Web
             licenceGridView.EditIndex = -1;
 
             con.Open();
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM detail", con);
             SqlCommand cmd = new SqlCommand("UPDATE Licences SET owner_uID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID, con);
             cmd.ExecuteNonQuery();
 
