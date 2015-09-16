@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CentPro - Lisenser" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Licences.aspx.cs" Inherits="CentPro_Licence_Web.Licences" %>
+﻿<%@ Page Title="CentPro - Lisenser" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Licences.aspx.cs" Inherits="CentPro_Licence_Web.Licences" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -9,15 +9,21 @@
     </div>
 
     <div class="row">
-        <h2></h2>
+        <h2>
+            
+        </h2>
         <p>
             <asp:GridView ID="licenceGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None"
                 Caption="Mine lisenser" CaptionAlign="Left" 
+                DataKeyNames="lID"
                 OnPageIndexChanging="licenceGridView_PageIndexChanging" 
                 OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
                 OnRowDeleting="licenceGridView_RowDeleting" 
                 OnRowEditing="licenceGridView_RowEditing" 
-                OnRowUpdating="licenceGridView_RowUpdating" Width="1200px">
+                OnRowUpdating="licenceGridView_RowUpdating" Width="1200px"
+                RowStyle-BackColor="White"
+                AlternatingRowStyle-BackColor="#a6c8e6">
+
                 <Columns>
                 <asp:BoundField DataField="lID" HeaderText="lID" />
                 <asp:BoundField DataField="Eier" HeaderText="Eier" />
@@ -31,6 +37,7 @@
                 <asp:CommandField ShowEditButton="true" />
                 </Columns>
             </asp:GridView>
+            <asp:LinkButton ID="lnkbExportToExcel" runat="server" OnClick="lnkbExportToExcel_Click">Export to Excel</asp:LinkButton>
         </p>
 
         <!--div class="col-md-4">
