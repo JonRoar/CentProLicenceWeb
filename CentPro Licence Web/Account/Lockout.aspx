@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <hgroup>
-        <h1>Locked out.</h1>
-        <h2 class="text-danger">This account has been locked out, please try again later.</h2>
+        <h1>Låst.</h1>
+        <h2 class="text-danger">Denne kontoen er låst. Prøv igjen senere eller ta kontakt med brukerstøtte.</h2>
     </hgroup>
 </asp:Content>
