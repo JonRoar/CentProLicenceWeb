@@ -22,6 +22,15 @@ namespace CentPro_Licence_Web {
         protected global::System.Web.UI.WebControls.GridView licenceGridView;
         
         /// <summary>
+        /// lnkbExportToExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbExportToExcel;
+        
+        /// <summary>
         /// sqltestbtn control.
         /// </summary>
         /// <remarks>

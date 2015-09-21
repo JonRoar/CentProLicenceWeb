@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CentPro - Lisenser" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Licences.aspx.cs" Inherits="CentPro_Licence_Web.Licences" %>
+﻿<%@ Page Title="CentPro - Avtaler" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agreements.aspx.cs" Inherits="CentPro_Licence_Web.Agreements" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -12,23 +12,20 @@
         <div class="col-md-4">
             <h2></h2>
             <p>
-                <asp:GridView ID="licenceGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None"
-                    Caption="Mine lisenser" CaptionAlign="Left" 
+                <asp:GridView ID="agreementsGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CssClass="Grid" Item
+                    Caption="Mine avtaler" CaptionAlign="Left" 
                     OnPageIndexChanging="licenceGridView_PageIndexChanging" 
                     OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
                     OnRowDeleting="licenceGridView_RowDeleting" 
                     OnRowEditing="licenceGridView_RowEditing" 
-                    OnRowUpdating="licenceGridView_RowUpdating">
+                    OnRowUpdating="licenceGridView_RowUpdating"
+                    RowStyle-BackColor="White"
+                    AlternatingRowStyle-BackColor="YellowGreen">
+                    <HeaderStyle CssClass="GridHeader"></HeaderStyle>
                     <Columns>
-                    <asp:BoundField DataField="lID" HeaderText="lID" />
-                    <asp:BoundField DataField="Eier" HeaderText="Eier" />
+                    <asp:BoundField DataField="aID" HeaderText="aID" />
                     <asp:BoundField DataField="Avtale" HeaderText="Avtale" />
-                    <asp:BoundField DataField="Gyldig fra" HeaderText="Gyldig fra" />
-                    <asp:BoundField DataField="Gyldig til" HeaderText="Gyldig til" />
-                    <asp:BoundField DataField="Antall lisenser" HeaderText="Antall" />
-                    <asp:BoundField DataField="Varsel" HeaderText="Varsel" />
-                    <asp:BoundField DataField="Produsent" HeaderText="Produsent" />
-                    <asp:BoundField DataField="Kontaktperson" HeaderText="Kontaktperson" />
+                    <asp:BoundField DataField="Avtaleeier" HeaderText="Avtaleeier" />
                     <asp:CommandField ShowEditButton="true" />
                     </Columns>
                 </asp:GridView>

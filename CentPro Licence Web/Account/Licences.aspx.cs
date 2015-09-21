@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
+using System.Drawing;
+using OpenXmlPackaging;
 
 namespace CentPro_Licence_Web
 {
@@ -50,20 +52,108 @@ namespace CentPro_Licence_Web
                 da.Fill(ds);
                 con.Open();
                 cmd.ExecuteNonQuery();
+                Session["LicenceTable"] = ds;
 
                 licenceGridView.DataSource = ds;
                 licenceGridView.DataBind();
 
                 con.Close();
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-
+                
             }
             finally
             {
                 con.Close();
             }
+        }
+
+
+        protected void ExportToExcel2007()
+        {
+            
+        }
+
+        protected void ExportToExcel2003(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=LicenceWebExport.xlsx");
+            Response.Charset = "";
+            //Response.ContentType = "application/vnd.ms-excel"; //Excel 2003
+            //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; //Excel 2007
+            //Response.ContentType = string.Empty;
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //To Export all pages
+                licenceGridView.AllowPaging = false;
+                this.BindData();
+
+                licenceGridView.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in licenceGridView.HeaderRow.Cells)
+                {
+                    cell.BackColor = licenceGridView.HeaderStyle.BackColor;
+                }
+
+                foreach (GridViewRow row in licenceGridView.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = licenceGridView.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = licenceGridView.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+                }
+
+                //licenceGridView.RenderControl(hw);
+                licenceGridView.RenderBeginTag(hw);
+                licenceGridView.HeaderRow.RenderControl(hw);
+                foreach (GridViewRow row in licenceGridView.Rows)
+                {
+                    row.RenderControl(hw);
+                }
+                licenceGridView.FooterRow.RenderControl(hw);
+                licenceGridView.RenderEndTag(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
+               server control at run time. */
+        }
+
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            // Handle specific exception.
+            if (exc is HttpUnhandledException)
+            {
+                //ErrorMsgTextBox.Text = "An error occurred on this page. Please verify your " +
+                //"information to resolve the issue."
+            }
+            // Clear the error from the server.
+            Server.ClearError();
         }
 
         protected void licenceGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -100,8 +190,8 @@ namespace CentPro_Licence_Web
 
         protected void licenceGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int licenceID = Convert.ToInt32(licenceGridView.DataKeys[e.RowIndex].Value.ToString());
-            GridViewRow row = (GridViewRow)licenceGridView.Rows[e.RowIndex];
+            //Retrieve the table from the session object.
+            DataTable dt = (DataTable)Session["LicenceTable"];
 
             Label lbllID = (Label)row.FindControl("lbllID");
             //TextBox txtname=(TextBox)gr.cell[].control[];
@@ -113,6 +203,7 @@ namespace CentPro_Licence_Web
             licenceGridView.EditIndex = -1;
 
             con.Open();
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM detail", con);
             SqlCommand cmd = new SqlCommand("UPDATE Licences SET owner_uID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID, con);
             cmd.ExecuteNonQuery();
 
@@ -140,6 +231,11 @@ namespace CentPro_Licence_Web
             {
                 Response.Write("Connection string: " + ConfigurationManager.ConnectionStrings["CentProSQL"].ToString() + "\r\nCatched a try: No connection. Timed out without response...");
             }
+        }
+
+        protected void lnkbExportToExcel_Click(object sender, EventArgs e)
+        {
+            ExportToExcel2003(sender, e);
         }
     }
 }
