@@ -79,12 +79,12 @@ namespace CentPro_Licence_Web
         {
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=LicenceWebExport.xlsx");
+            Response.AddHeader("content-disposition", "attachment;filename=LicenceWebExport.xls");
             Response.Charset = "";
-            //Response.ContentType = "application/vnd.ms-excel"; //Excel 2003
+            Response.ContentType = "application/vnd.ms-excel"; //Excel 2003
             //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; //Excel 2007
             //Response.ContentType = string.Empty;
-            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
             using (StringWriter sw = new StringWriter())
             {
@@ -190,9 +190,11 @@ namespace CentPro_Licence_Web
 
         protected void licenceGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            GridViewRow row = licenceGridView.Rows[e.RowIndex];
+
             //Retrieve the table from the session object.
             DataTable dt = (DataTable)Session["LicenceTable"];
-
+            
             Label lbllID = (Label)row.FindControl("lbllID");
             //TextBox txtname=(TextBox)gr.cell[].control[];
             TextBox txtOwner = (TextBox)row.Cells[0].Controls[0];

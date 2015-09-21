@@ -9,18 +9,16 @@
     </div>
 
     <div class="row">
-        <h2>
-            
-        </h2>
+        <h4 style="background-color:lightgreen; text-align: center; padding-top:5px; padding-bottom:5px;">Mine lisenser</h4>
         <p>
             <asp:GridView ID="licenceGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None"
-                Caption="Mine lisenser" CaptionAlign="Left" 
+                Caption="" CaptionAlign="Left" Width="1200px"
                 DataKeyNames="lID"
                 OnPageIndexChanging="licenceGridView_PageIndexChanging" 
                 OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
                 OnRowDeleting="licenceGridView_RowDeleting" 
                 OnRowEditing="licenceGridView_RowEditing" 
-                OnRowUpdating="licenceGridView_RowUpdating" Width="1200px"
+                OnRowUpdating="licenceGridView_RowUpdating"
                 RowStyle-BackColor="White"
                 AlternatingRowStyle-BackColor="#a6c8e6">
 
@@ -39,16 +37,6 @@
             </asp:GridView>
             <asp:LinkButton ID="lnkbExportToExcel" runat="server" OnClick="lnkbExportToExcel_Click">Export to Excel</asp:LinkButton>
         </p>
-
-        <!--div class="col-md-4">
-            <h2>SQL tilkoblingstest</h2>
-            <p>
-                Trykk her for å teste SQL connectionstring fra Web.config
-            </p>
-            <p>
-                <asp:Button ID="sqltestbtn" runat="server" Text="Test" OnClick="sqltestbtn_Click" />
-            </p>
-        </!--div-->
     </div>
 
 </asp:Content>

@@ -9,37 +9,26 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <h2></h2>
-            <p>
-                <asp:GridView ID="agreementsGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CssClass="Grid" Caption="Mine avtaler" CaptionAlign="Left" 
-                    OnPageIndexChanging="licenceGridView_PageIndexChanging" 
-                    OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
-                    OnRowDeleting="licenceGridView_RowDeleting" 
-                    OnRowEditing="licenceGridView_RowEditing" 
-                    OnRowUpdating="licenceGridView_RowUpdating"
-                    RowStyle-BackColor="White"
-                    AlternatingRowStyle-BackColor="YellowGreen">
-                    <HeaderStyle CssClass="GridHeader"></HeaderStyle>
-                    <Columns>
-                    <asp:BoundField DataField="aID" HeaderText="aID" />
-                    <asp:BoundField DataField="Avtale" HeaderText="Avtale" />
-                    <asp:BoundField DataField="Avtaleeier" HeaderText="Avtaleeier" />
-                    <asp:CommandField ShowEditButton="true" />
-                    </Columns>
-                </asp:GridView>
-            </p>
-        </div>
-
-        <!--div class="col-md-4">
-            <h2>SQL tilkoblingstest</h2>
-            <p>
-                Trykk her for å teste SQL connectionstring fra Web.config
-            </p>
-            <p>
-                <asp:Button ID="sqltestbtn" runat="server" Text="Test" OnClick="sqltestbtn_Click" />
-            </p>
-        </!--div-->
+        <h4 style="background-color:lightgreen; text-align: center; padding-top:5px; padding-bottom:5px;">Mine avtaler</h4>
+        <p>
+            <asp:GridView ID="agreementsGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CssClass="Grid" 
+                Caption="" CaptionAlign="Left" Width="1200px"
+                OnPageIndexChanging="licenceGridView_PageIndexChanging" 
+                OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
+                OnRowDeleting="licenceGridView_RowDeleting" 
+                OnRowEditing="licenceGridView_RowEditing" 
+                OnRowUpdating="licenceGridView_RowUpdating"
+                RowStyle-BackColor="White"
+                AlternatingRowStyle-BackColor="#a6c8e6">
+                <HeaderStyle CssClass="GridHeader"></HeaderStyle>
+                <Columns>
+                <asp:BoundField DataField="aID" HeaderText="aID" />
+                <asp:BoundField DataField="Avtale" HeaderText="Avtale" />
+                <asp:BoundField DataField="Avtaleeier" HeaderText="Avtaleeier" />
+                <asp:CommandField ShowEditButton="true" />
+                </Columns>
+            </asp:GridView>
+        </p>
     </div>
 
 </asp:Content>

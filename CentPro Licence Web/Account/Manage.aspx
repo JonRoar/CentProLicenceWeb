@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="CentPro_Licence_Web.Account.Manage" %>
-
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
