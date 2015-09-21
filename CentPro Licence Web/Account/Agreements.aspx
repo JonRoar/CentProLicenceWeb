@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CentPro - Avtaler" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Agreements.aspx.cs" Inherits="CentPro_Licence_Web.Agreements" %>
+﻿<%@ Page Title="CentPro - Avtaler" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="../Account/Agreements.aspx.cs" Inherits="CentPro_Licence_Web.Agreements" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -12,8 +12,7 @@
         <div class="col-md-4">
             <h2></h2>
             <p>
-                <asp:GridView ID="agreementsGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CssClass="Grid" Item
-                    Caption="Mine avtaler" CaptionAlign="Left" 
+                <asp:GridView ID="agreementsGridView" runat="server" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CssClass="Grid" Caption="Mine avtaler" CaptionAlign="Left" 
                     OnPageIndexChanging="licenceGridView_PageIndexChanging" 
                     OnRowCancelingEdit="licenceGridView_RowCancelingEdit" 
                     OnRowDeleting="licenceGridView_RowDeleting" 
