@@ -50,9 +50,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Licences">Lisenser</a></li>
-                        <li><a runat="server" href="~/Agreements">Avtaler</a></li>
-                        <li><a runat="server" href="~/Settings">Innstillinger</a></li>
+                        <li><a runat="server" href="~/Account/Licences">Lisenser</a></li>
+                        <li><a runat="server" href="~/Account/Agreements">Avtaler</a></li>
+                        <li><a runat="server" href="~/Account/Settings">Innstillinger</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <%-- Shown only for not-logged in users --%>
