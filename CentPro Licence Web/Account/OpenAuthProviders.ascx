@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="CentPro_Licence_Web.Account.OpenAuthProviders" %>
 
+<div id="fb-root"></div>
+
 <div id="socialLoginList">
     <h4>Use another service to log in.</h4>
     <hr />
@@ -19,4 +21,12 @@
             </div>
         </EmptyDataTemplate>
     </asp:ListView>
+
+    <div
+      class="fb-like"
+      data-share="true"
+      data-width="450"
+      data-show-faces="true">
+    </div>
+
 </div>
