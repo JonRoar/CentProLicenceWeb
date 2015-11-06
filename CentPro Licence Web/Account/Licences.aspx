@@ -8,42 +8,26 @@
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Les mer &raquo;</a> </p>
     </div>
 
-        <ul id="errUl">
-             <li id="errLi">
-                 <span style="font-weight:bold;">Dette er en feilmelding [hardcoded]</span>
-                 <input type="checkbox" id="errCB"/><label id="errLabel" for="errCB">&nbsp;&nbsp;</label>&nbsp;&nbsp;
-                 
-		        <ul>
-				    <br /><br />Og her kan man få ennå mer informasjon om feilen... <a href="/" >Feil X</a>
-		        </ul>
-	        </li>
-        </ul>
-
         <ul id="eUl">
-             <li id="eLi">
-                 <span>Du (Jon Roar Odden) har <span style="color:#ff0000; font-weight:bold;">7</span> lisenser som utgår de nærmeste 3 månedene. [hardcoded]</span>
-                 <input type="checkbox" id="expandCB"/><label id="eLabel" for="expandCB">&nbsp;&nbsp;</label>&nbsp;&nbsp;
+             <li id="eLi" style="text-align:left">
+                 <span style="text-align:left;">Du (Jon Roar Odden) har <span style="color:#ff0000; text-decoration:double;">7</span> lisenser som utgår de nærmeste 3 månedene. [hardcoded]</span> 
+                 <input type="checkbox" id="expandCB"/><label id="eLabel" for="expandCB">Se alle varsler&nbsp;&nbsp;</label>&nbsp;&nbsp;
 
-		        <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+                <p></p>
+		        <ul style="text-align:left">
+				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
 		        </ul>
                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
 		        </ul>
-                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+                 <ul class="expand">
+				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
 		        </ul>
-                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+                 <ul class="expand">
+				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
 		        </ul>
-                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                 <ul>
-				    Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+                 <ul class="expand">
+				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
 		        </ul>
 	        </li>
         </ul>
@@ -74,7 +58,6 @@
                 <asp:BoundField DataField="Produsent" HeaderText="Produsent" />
                 <asp:BoundField DataField="Kontaktperson" HeaderText="Kontaktperson" />
                 <asp:CommandField ShowEditButton="true" />
-                <asp:CommandField ShowDeleteButton="true" />
                 </Columns>
             </asp:GridView>
             <asp:LinkButton ID="lnkbExportToExcel" runat="server" OnClick="lnkbExportToExcel_Click">Export to Excel</asp:LinkButton>

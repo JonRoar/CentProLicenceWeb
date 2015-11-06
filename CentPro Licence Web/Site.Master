@@ -39,12 +39,6 @@
         </asp:ScriptManager>
 
         <script src='<%= ResolveUrl("Scripts/fblogin.js") %>'></script>
-        <script type="text/javascript">
-            function callAlert(msg)
-            {
-                alert(msg);
-            }
-        </script>
       
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
