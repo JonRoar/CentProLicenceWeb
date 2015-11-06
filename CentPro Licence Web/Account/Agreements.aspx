@@ -9,27 +9,21 @@
     </div>
 
     <ul id="eUl">
-	        <li id="eLi"><input type="checkbox" id="expandCB"/><label id="eLabel" for="expandCB" style="text-align:right;">Se alle varsler&nbsp;&nbsp;</label><br /><br />
-                Du (Jon Roar Odden) har <span style="color:#ff0000; text-decoration:double;">2</span> avtaler som utgår de nærmeste 3 månedene. [hardcoded] 
+        <li id="eLi">
+            <span>Du (Jon Roar Odden) har <span style="color:#ff0000; font-weight:bold;">3</span> avtaler som utgår de nærmeste 3 månedene. [hardcoded]</span>
+            <input type="checkbox" id="expandCB"/><label id="eLabel" for="expandCB">&nbsp;&nbsp;</label>&nbsp;&nbsp;
 
-                <p></p>
-		        <ul>
-				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                <ul>
-				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                 <ul class="expand">
-				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                 <ul class="expand">
-				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-                 <ul class="expand">
-				    Her vil alle varsler for dine lisenser og avtale komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
-		        </ul>
-	        </li>
-        </ul>
+		<ul>
+			Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+		</ul>
+        <ul>
+			Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+		</ul>
+            <ul>
+			Her vil alle varsler for dine lisenser og avtaler komme... med linker til hver enkelt av de. <a href="/" >Avtale xyz</a>
+		</ul>
+	    </li>
+    </ul>
 
     <div class="row">
         <h4 style="background-color:lightgreen; text-align: center; padding-top:5px; padding-bottom:5px;">Mine avtaler</h4>

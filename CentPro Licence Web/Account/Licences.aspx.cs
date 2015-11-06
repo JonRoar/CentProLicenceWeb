@@ -30,12 +30,28 @@ namespace CentPro_Licence_Web
             }
         }
 
-        public void BindData()
+        public SqlConnection OpenDBConnection()
         {
             try
             {
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CentProSQL"].ConnectionString);
-                //cmd.CommandText = "Select * from Licences";
+                return con;
+            }
+            catch (SqlException)
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void BindData()
+        {
+            try
+            {
+                SqlConnection con = OpenDBConnection();
                 cmd.CommandText = "SELECT l.lID AS 'lID', u.uName AS 'Eier', a.aAgreementName AS 'Avtale', l.lDateFrom AS 'Gyldig fra', " +
                                     "l.lDateTo AS 'Gyldig til', l.lCount AS 'Antall lisenser', n.nDescription AS 'Varsel', p.pName as 'Produsent', " +
                                     "c.cName AS 'Kontaktperson' " +
@@ -158,7 +174,10 @@ namespace CentPro_Licence_Web
 
         protected void licenceGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            /*
+            ClientScript.RegisterStartupScript(GetType(), "AlertMessage", "callAlert('Hello world!');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "<SCRIPT LANGUAGE='javascript'>alert('Hello world!');</script>", false);
+
+            SqlConnection conn = OpenDBConnection();
             GridViewRow row = (GridViewRow)licenceGridView.Rows[e.RowIndex];
             Label lbldeleteid = (Label)row.FindControl("lID");
             con.Open();
@@ -166,7 +185,6 @@ namespace CentPro_Licence_Web
             cmd.ExecuteNonQuery();
             con.Close();
             BindData();
-            */
         }
 
         protected void licenceGridView_RowEditing(object sender, GridViewEditEventArgs e)
@@ -187,13 +205,15 @@ namespace CentPro_Licence_Web
             BindData();
         }
 
+        
 
         protected void licenceGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            SqlConnection conn = OpenDBConnection();
             GridViewRow row = licenceGridView.Rows[e.RowIndex];
 
             //Retrieve the table from the session object.
-            DataTable dt = (DataTable)Session["LicenceTable"];
+            DataTable dt = (DataTable)Session["Licence"];
             
             Label lbllID = (Label)row.FindControl("lbllID");
             //TextBox txtname=(TextBox)gr.cell[].control[];
@@ -204,12 +224,12 @@ namespace CentPro_Licence_Web
             //TextBox textc = (TextBox)row.FindControl("txtc");
             licenceGridView.EditIndex = -1;
 
-            con.Open();
+            conn.Open();
             //SqlCommand cmd = new SqlCommand("SELECT * FROM detail", con);
-            SqlCommand cmd = new SqlCommand("UPDATE Licences SET owner_uID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID, con);
+            SqlCommand cmd = new SqlCommand("UPDATE Licences SET owner_uID=" + Int16.Parse(txtOwner.Text) + ", lCount=" + Int16.Parse(txtCount.Text) + " where lID=" + lbllID.Text, conn);
             cmd.ExecuteNonQuery();
 
-            con.Close();
+            conn.Close();
             BindData();
         }
 
